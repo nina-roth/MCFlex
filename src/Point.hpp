@@ -1,11 +1,9 @@
 #ifndef __POINT_HPP
 #define __POINT_HPP
 
-#include <vector>
-
 /*! \brief A Point class   
  *
- *  Detailed description TODO.
+ *  Implements a "Point" of any dimension (default: 2).
  */ 
 class Point{
 
@@ -14,7 +12,7 @@ class Point{
 			dim=d;
 		}
 		std::vector<double> coords; /*!< Coordinate vector */
-		int dim;
+		int dim; /*!< Point dimension (default: 2) */
 		~Point(){};
 
 	private:
