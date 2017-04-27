@@ -5,6 +5,13 @@
 #include <functional>
 #include "Point.hpp"
 
+#ifndef GIT_MODIFIED
+	#define GIT_MODIFIED "gm"
+#endif
+
+#ifndef GIT_VERSION
+	#define GIT_VERSION "git version"
+#endif
 
 /*! \brief A class to generate vectors of random numbers   
  *
@@ -196,6 +203,26 @@ int MC_integrate::get_values(){
 	return 0;
 }
 
+/*! \brief Version header  
+ *
+ *  Displays the code version used and if some files have been modified wrt git.
+ */
+void header(std::ostream &outf) {
+  time_t now = time(0);
+  struct tm tstruct;
+  char buf[80];
+  tstruct = *localtime(&now);
+  strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+
+  outf << "# Compiled " << __DATE__ << " " << __TIME__ << std::endl;
+  outf << "# git HEAD:" << GIT_VERSION << std::endl;
+  if (sizeof(GIT_MODIFIED) > 1) {
+    outf << "# However, the following files are modified:" << std::endl;
+    outf << "#  " << GIT_MODIFIED << std::endl;
+  }
+  outf << "# Runtime: " << buf << std::endl << std::endl;
+}
+
 /*! \brief Main function   
  *
  *  Parameters are dim, borders and number of integration points.
@@ -204,6 +231,8 @@ int main(int argc, char *argv[]){
 
 
 	if(argc != 4){std::cerr << "Error " << std::endl; return -1; }
+
+	header(std::cout);
 
 	int dim=atoi(argv[1]); //!< the dimension of integration
 	std::vector<double> borders(dim, atof(argv[2])); //!< the integration borders
