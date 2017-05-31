@@ -1,6 +1,6 @@
 # Reasonably sensible defaults
 CC    	= g++
-C		= gcc
+C	= gcc
 CFLAGS	= -Wall -g -O3 -std=c++14  -fdiagnostics-color=auto
 CPATH 	= /opt/local/include/
 LPATH   = /opt/local/lib
@@ -9,6 +9,7 @@ FLAGS = -lm
 INC_DIR = include   
 SRC_DIR = src
 BIN_DIR = bin
+OBJ_DIR = src
 
 # Some customizations for known systems
 
@@ -17,6 +18,7 @@ GIT_VERSION = $(shell git rev-parse --short HEAD)
 GIT_MODIFIED = $(shell git ls-files -m | tr "\n" " ")
 GIT_VARIABLES = -DGIT_VERSION='"$(GIT_VERSION)"' -DGIT_MODIFIED='"$(GIT_MODIFIED)"'
 
+
 ifeq ($(HOST), Airy)
 	CC      = /opt/local/bin/g++
 	#FFTW    = -DFFTW_TYPE_PREFIX=1
@@ -24,19 +26,16 @@ ifeq ($(HOST), Airy)
 endif
 
 SRCS = $(SRC_DIR)/*.cpp
-DEPS = $(INC_DIR)/*.h
-#OBJS = $(OBJ_DIR)/*.o
+DEPS = $(INC_DIR)/*.hpp
+OBJS = $(OBJ_DIR)/*.o
 
 all: MCflex
 
-MCflex: $(SRC_DIR)/MC_flex.o
+$(SRC_DIR)/MC_flex.o: $(SRC_DIR)/MC_flex.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
+
+MCflex: $(OBJ_DIR)/MC_flex.o
 	$(CC) $^ -o $(BIN_DIR)/$@ $(FLAGS) $(GSL_FLAGS) $(GIT_VARIABLES)
 
-%.o: $(SRC_DIR)/%.cpp $(DEPS)
-	$(CC) $(CFLAGS) $< -o $@ $(GIT_VARIABLES)
-
 clean: 
-	-rm $(SRC_DIR)/*.o $(BIN_DIR)/MCflex 
-
-
-
+	-rm $(OBJ_DIR)/*.o $(BIN_DIR)/MCflex 
