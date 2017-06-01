@@ -29,13 +29,16 @@ SRCS = $(SRC_DIR)/*.cpp
 DEPS = $(INC_DIR)/*.hpp
 OBJS = $(OBJ_DIR)/*.o
 
-all: MCflex
+all: MCflexmain
 
-$(SRC_DIR)/MC_flex.o: $(SRC_DIR)/MC_flex.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+$(SRC_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CC) $(CFLAGS) -c $< -o $@ $(GIT_VARIABLES)
 
-MCflex: $(OBJ_DIR)/MC_flex.o
+#$(SRC_DIR)/MC_flex.o: $(SRC_DIR)/MC_flex.cpp
+#	$(CC) $(CFLAGS) -c $< -o $@ $(GIT_VARIABLES)
+
+MCflexmain: $(OBJ_DIR)/main.cpp $(OBJ_DIR)/MC_flex.o $(OBJ_DIR)/RanVec.o $(OBJ_DIR)/Point.o $(OBJ_DIR)/GitInfo.o
 	$(CC) $^ -o $(BIN_DIR)/$@ $(FLAGS) $(GSL_FLAGS) $(GIT_VARIABLES)
 
 clean: 
-	-rm $(OBJ_DIR)/*.o $(BIN_DIR)/MCflex 
+	-rm $(OBJ_DIR)/*.o $(BIN_DIR)/MCflexmain
