@@ -9,6 +9,11 @@
 #include <stdlib.h>
 
 
+/*! \brief The main function    
+ *
+ *  Defines a few weight functions and integrates them using MC_flex integrator
+ */
+
 std::vector<double> get_weights1(std::vector<double> points, std::vector<double> border){
 
 	std::vector<double> weights;
