@@ -2,7 +2,8 @@ AUTOMAKE_OPTIONS = foreign
 bin_PROGRAMS = MCFlex
 bindir = @bindir@
 GIT_VERSION = $(shell git rev-parse --short HEAD)
-GIT_MODIFIED = $(shell git ls-files -m | tr '\n' ' ' | tr -d '\r')
+#GIT_MODIFIED = $(shell git ls-files -m | tr '\n' ' ' | tr -d '\r')
+GIT_MODIFIED = $(shell git diff --name-only --diff-filter=M | tr '\n' ' ')
 CUSTOMDEFINES = -DGIT_VERSION='"$(GIT_VERSION)"' -DGIT_MODIFIED='"$(GIT_MODIFIED)"'
 MCFlex_SOURCES = main.cpp MC_flex.cpp RanVec.cpp Point.cpp GitInfo.cpp MC_flex.hpp RanVec.hpp Point.hpp GitInfo.hpp
 MCFlex_CXXFLAGS = -g $(CUSTOMDEFINES)  ##these flags will be ADDED to the default -g -O2 !
