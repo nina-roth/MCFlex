@@ -80,7 +80,7 @@ int main(int argc, char *argv[]){
 	std::vector<double> borders(dim, atof(argv[2])); //!< the integration borders
 	double volume=1.;
 
-	MC_integrate mc1(dim, atoi(argv[3]), volume, borders, 100, get_weights_square); //initialise points, volume, border, seed
+	MC_integrate mc1(dim, atoi(argv[3]), volume, borders, 100, get_weights_square); //initialise points, volume, border, seed, weight_function
 	mc1.calculate();
 	std::cout << "Result: " << mc1.result << ", +- " << mc1.error<< std::endl;
 	
@@ -96,7 +96,7 @@ int main(int argc, char *argv[]){
 	//std::cout << std::endl;
 
 
-	MC_integrate mc2(dim, atoi(argv[3]), volume, borders, 100, get_weights_circ); //initialise points, volume, border, seed
+	MC_integrate mc2(dim, atoi(argv[3]), volume, borders, 100, get_weights_circ); //initialise points, volume, border, seed, weight_function
 	mc2.calculate();
 	std::cout << "Result: " << mc2.result << ", +- " << mc2.error<< std::endl;
 

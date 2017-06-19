@@ -1,4 +1,6 @@
 *.dSYM
 *.o
+*.in
 doc/*
 bin/*
+Makefile
