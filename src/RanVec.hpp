@@ -13,13 +13,14 @@ class RanVec{
 	public:
 		RanVec(unsigned long int seed = 0);
 		//Ran ();
-		double get_rand();
+		double get_rand(){return gsl_rng_uniform(this->generator);}
 		std::vector<double> get_rands(long unsigned int);
 		std::vector<Point> get_vec_rands(long unsigned int, int);
-		~RanVec();
+		~RanVec(){gsl_rng_free(generator);}
 
 	private:
 		gsl_rng* generator = NULL;
+		unsigned long int seed;
 
 };
 

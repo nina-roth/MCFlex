@@ -2,6 +2,8 @@
 #include "../src/RanVec.hpp"
 #include "../src/MC_flex.hpp"
 #include <vector>
+#include <stdexcept>
+#include <iostream>
 #define BOOST_TEST_MODULE MyTest
 #include <boost/test/included/unit_test.hpp>
 
@@ -71,6 +73,23 @@ BOOST_AUTO_TEST_CASE( my_test_2 )
     BOOST_REQUIRE( diff_error_2 < 1e-7 );
 
 }
+
+BOOST_AUTO_TEST_CASE( my_test_3 )
+{
+
+	std::vector<double> borders(0, 0);
+	BOOST_CHECK_THROW( MC_integrate mc3(2, 1000, 1., borders, 100, get_weights_circ), std::runtime_error );
+
+}
+
+// BOOST_AUTO_TEST_CASE_EXPECTED_FAILURES( my_test_4, 1 )
+// BOOST_AUTO_TEST_CASE( my_test_4 )
+// {
+
+// 	std::vector<double> borders(1, 0.5);
+// 	BOOST_CHECK_NO_THROW( MC_integrate mc4(2, 1000, 1., borders, 100, get_weights_circ) );
+
+// }
 
 
 

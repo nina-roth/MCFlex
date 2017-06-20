@@ -5,9 +5,9 @@
 #include <iostream>
 #include <cmath>
 
-MC_integrate::~MC_integrate(){
+// MC_integrate::~MC_integrate(){
 
-}
+// }
 
 void MC_integrate::calculate(){
 	
@@ -36,40 +36,35 @@ void MC_integrate::calculate(){
 
 }
 
-MC_integrate::MC_integrate(int dim, unsigned long int n, double vol, std::vector<double> b,
-					 unsigned long int s){//NB: parameters with default values can only be at the end
-			ndim=dim;
-			npoints=n;
-			volume=vol;
-			border=b;
-			seed=s;
-			//std::cout << "Initialised to " << npoints << " " << volume << " " << border << " "<<seed <<std::endl;
-}
+// MC_integrate::MC_integrate(int dim, unsigned long int n, double vol, std::vector<double> b,
+// 					 unsigned long int s){//NB: parameters with default values can only be at the end
+// 			ndim=dim;
+// 			npoints=n;
+// 			volume=vol;
+// 			border=b;
+// 			seed=s;
+// 			//std::cout << "Initialised to " << npoints << " " << volume << " " << border << " "<<seed <<std::endl;
+// }
 
-MC_integrate::MC_integrate(int dim, unsigned long int n, double vol, std::vector<double> b, unsigned long int s, 
-					 std::vector<double> (*weight_function)(std::vector<Point>, std::vector<double>) ){
-			ndim=dim;
-			npoints=n;
-			volume=vol;
-			border=b;
-			seed=s;
-			get_weights=weight_function;
-			//std::cout << "Initialised to " << npoints << " " << volume << " " << border << " "<<seed <<std::endl;
-}
+// MC_integrate::MC_integrate(const int dim, const unsigned long int n,  const double vol, std::vector<double> b, const unsigned long int s, 
+// 					 std::vector<double> (*weight_function)(std::vector<Point>, std::vector<double>) ){
+// 			ndim=dim;
+// 			npoints=n;
+// 			volume=vol;
+// 			border=b;
+// 			seed=s;
+// 			get_weights=weight_function;
+// 			//std::cout << "Initialised to " << npoints << " " << volume << " " << border << " "<<seed <<std::endl;
+// }
 
 
-void MC_integrate::set_values(long unsigned int n, double v, std::vector<double> b, long unsigned int s){
-	npoints=n;
-	volume=v;
-	border=b;
-	seed=s;
-	std::cout << "Values set to "<< npoints << ", " << volume <<  ", " << border[0] << ", "<<seed <<std::endl;
-}
-
-int MC_integrate::get_values(){
-
-	return 0;
-}
+// void MC_integrate::set_values(long unsigned int n, double v, std::vector<double> b, long unsigned int s){
+// 	npoints=n;
+// 	volume=v;
+// 	border=b;
+// 	seed=s;
+// 	std::cout << "Values set to "<< npoints << ", " << volume <<  ", " << border[0] << ", "<<seed <<std::endl;
+// }
 
 
 

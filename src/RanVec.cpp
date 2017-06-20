@@ -16,9 +16,9 @@ RanVec::RanVec (unsigned long int seed) {
 
 }
 
-RanVec::~RanVec(){
-	gsl_rng_free(generator);
-}
+// RanVec::~RanVec(){
+// 	gsl_rng_free(generator);
+// }
 
 std::vector<Point> RanVec::get_vec_rands(long unsigned int n, int dim){
 	std::vector<Point> rnd(n, Point(dim));
@@ -34,10 +34,10 @@ std::vector<Point> RanVec::get_vec_rands(long unsigned int n, int dim){
 	return rnd;
 }
 
-double RanVec::get_rand(){
+// double RanVec::get_rand(){
 
-	return gsl_rng_uniform(this->generator);
-}
+// 	return gsl_rng_uniform(this->generator);
+// }
 
 std::vector<double> RanVec::get_rands(long unsigned int n){
 	std::vector<double> rnd(n);

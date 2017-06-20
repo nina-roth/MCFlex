@@ -14,20 +14,6 @@
  *  Defines a few weight functions and integrates them using MC_flex integrator
  */
 
-std::vector<double> get_weights1(std::vector<double> points, std::vector<double> border){
-
-	std::vector<double> weights;
-	std::vector<double>::const_iterator i;
-	for(i=points.begin(); i!=points.end(); i++){
-
-		if( (*i)<border[0] ){weights.push_back(1.);}
-		else{weights.push_back(0.);}
-
-	}
-
-	return weights;
-}
-
 std::vector<double> get_weights_square(std::vector<Point> points, std::vector<double> border){
 
 	bool tester=1;
@@ -109,6 +95,20 @@ int main(int argc, char *argv[]){
 	// 	}
 	// 	counter+=1;
 	// }
+
+	std::vector<double> bb(3, 15);
+	std::cout << bb.empty() << std::endl;
+	std::vector<double> bb2(0.2, 15);
+	std::cout << bb2.empty() << std::endl;
+	//gw = nullptr;
+	//std::vector<double> (*)(std::vector<Point>, std::vector<double>) gw;// = nullptr;
+	try{
+		MC_integrate mc3(dim, atoi(argv[3]), volume, bb2, 100, get_weights_circ);
+	}
+	catch(std::exception& e){
+		std::cout << e.what() << std::endl;
+	}
+	//std::cout << bb.at(0) << std::endl;
 
 	//mc1.set_values(1000,1.,0.5,100);
 	//mc1.calculate(); //sets border
