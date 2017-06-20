@@ -1,5 +1,6 @@
 AUTOMAKE_OPTIONS = foreign
-bin_PROGRAMS = test1
+TESTS = test1
+check_PROGRAMS = test1
 bindir = @bindir@
 test1_SOURCES = test_file.cpp ../src/MC_flex.cpp ../src/MC_flex.hpp ../src/Point.cpp ../src/Point.hpp ../src/RanVec.cpp ../src/RanVec.hpp
 #test1_SOURCES = test_file.cpp MC_flex.cpp MC_flex.hpp Point.cpp Point.hpp RanVec.cpp RanVec.hpp
