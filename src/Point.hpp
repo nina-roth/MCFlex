@@ -9,7 +9,7 @@
 class Point{
 
 	public:
-		Point (unsigned int dim_=2) : dim(dim_){};
+		Point (int dim_=2) : dim(dim_){};
 		std::vector<double> coords; /*!< Coordinate vector */
 		int dim; /*!< Point dimension (default: 2) */
 		~Point(){};

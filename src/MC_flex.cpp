@@ -14,7 +14,7 @@ void MC_integrate::calculate(){
 	double fexp = 0.;
 	double fsq_exp = 0.;
 
-	for(long unsigned int i=0; i<npoints; i++){
+	for(int i=0; i<npoints; i++){
 
 		fexp += weights[i];
 		fsq_exp += (weights[i])*(weights[i]);
@@ -25,8 +25,8 @@ void MC_integrate::calculate(){
 	fexp /= normalisation;
 	fsq_exp /= normalisation;
 
-	result = volume * fexp;
-	error = volume * sqrt( (fsq_exp - fexp * fexp )/(normalisation) );
+	result_ = volume * fexp;
+	error_ = volume * sqrt( (fsq_exp - fexp * fexp )/(normalisation) );
 
 }
 

@@ -16,12 +16,12 @@ RanVec::RanVec (unsigned long int seed) {
 
 }
 
-std::vector<Point> RanVec::get_vec_rands(long unsigned int n, int dim){
+std::vector<Point> RanVec::get_vec_rands(int n, int dim){
 	std::vector<Point> rnd(n, Point(dim));
 	if( rnd.empty() ){
 		throw std::runtime_error("MC_integrate: Illegal parameters for RanVec::get_vec_rands(). Aborting...");
 	}
-	for(long unsigned int i=0;i<n;i++){
+	for(int i=0;i<n;i++){
 	 	for(int j=0; j<dim; j++){
 	 		rnd[i].coords.push_back( gsl_rng_uniform(generator) );
 	 	}
@@ -30,12 +30,12 @@ std::vector<Point> RanVec::get_vec_rands(long unsigned int n, int dim){
 	return rnd;
 }
 
-std::vector<double> RanVec::get_rands(long unsigned int n){
+std::vector<double> RanVec::get_rands(int n){
 	std::vector<double> rnd(n);
 	if( rnd.empty() ){
 		throw std::runtime_error("MC_integrate: Illegal parameters for RanVec::get_rands(). Aborting...");
 	}
-	for(long unsigned int i=0;i<n;i++){
+	for(int i=0; i<n; i++){
 	 	rnd[i] = gsl_rng_uniform(generator);
 	}
 	return rnd;
