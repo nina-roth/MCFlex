@@ -1,5 +1,6 @@
 #include "Point.hpp"
 #include "RanVec.hpp"
+#include <stdexcept>
 
 /*! \brief A class to generate vectors of random numbers   
  *
@@ -12,37 +13,30 @@ RanVec::RanVec (unsigned long int seed) {
 			T = gsl_rng_ranlxd2;
 			generator = gsl_rng_alloc (T);
 			gsl_rng_set(generator, seed);
-			//std::cout << "Seed is " << seed << std::endl;
 
 }
 
-// RanVec::~RanVec(){
-// 	gsl_rng_free(generator);
-// }
-
 std::vector<Point> RanVec::get_vec_rands(long unsigned int n, int dim){
 	std::vector<Point> rnd(n, Point(dim));
-	double dummy;
+	if( rnd.empty() ){
+		throw std::runtime_error("MC_integrate: Illegal parameters for RanVec::get_vec_rands(). Aborting...");
+	}
 	for(long unsigned int i=0;i<n;i++){
 	 	for(int j=0; j<dim; j++){
-	 		dummy=gsl_rng_uniform(this->generator);
-	 		//std::cout << dummy << std::endl;
-	 		rnd[i].coords.push_back(dummy);
+	 		rnd[i].coords.push_back( gsl_rng_uniform(generator) );
 	 	}
 	}
 
 	return rnd;
 }
 
-// double RanVec::get_rand(){
-
-// 	return gsl_rng_uniform(this->generator);
-// }
-
 std::vector<double> RanVec::get_rands(long unsigned int n){
 	std::vector<double> rnd(n);
+	if( rnd.empty() ){
+		throw std::runtime_error("MC_integrate: Illegal parameters for RanVec::get_rands(). Aborting...");
+	}
 	for(long unsigned int i=0;i<n;i++){
-	 	rnd[i]=gsl_rng_uniform(this->generator);
+	 	rnd[i] = gsl_rng_uniform(generator);
 	}
 	return rnd;
 }

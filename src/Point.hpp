@@ -4,17 +4,19 @@
 
 /*! \brief A Point class   
  *
- *  Implements a "Point" of any dimension (default: 2).
+ *  UNDER CONSTRUCTION: Implements a "Point" of any dimension (default: 2).
  */ 
 class Point{
 
 	public:
-		Point (unsigned int d=2);
+		Point (unsigned int dim_=2) : dim(dim_){};
 		std::vector<double> coords; /*!< Coordinate vector */
 		int dim; /*!< Point dimension (default: 2) */
-		~Point();
+		~Point(){};
 
 	private:
+		
+		
 };
 
 #endif

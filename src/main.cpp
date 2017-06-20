@@ -86,28 +86,19 @@ int main(int argc, char *argv[]){
 	mc2.calculate();
 	std::cout << "Result: " << mc2.result << ", +- " << mc2.error<< std::endl;
 
-	// std::vector<Point>::const_iterator pi;
-	// int counter =0;
-	// for(pi=pp.begin(); pi!=pp.end(); pi++){
-	// 	std::cout << counter << ":" << std::endl;
-	// 	for(int j=0; j<dim;j++){
-	// 		std::cout << (*pi).coords.at(j) << std::endl;
-	// 	}
-	// 	counter+=1;
-	// }
 
-	std::vector<double> bb(3, 15);
-	std::cout << bb.empty() << std::endl;
-	std::vector<double> bb2(0.2, 15);
-	std::cout << bb2.empty() << std::endl;
-	//gw = nullptr;
-	//std::vector<double> (*)(std::vector<Point>, std::vector<double>) gw;// = nullptr;
-	try{
-		MC_integrate mc3(dim, atoi(argv[3]), volume, bb2, 100, get_weights_circ);
-	}
-	catch(std::exception& e){
-		std::cout << e.what() << std::endl;
-	}
+	// std::vector<double> bb(3, 15);
+	// //std::cout << bb.empty() << std::endl;
+	// std::vector<double> bb2(0.2, 15);
+	// //std::cout << bb2.empty() << std::endl;
+	// //gw = nullptr;
+	// //std::vector<double> (*)(std::vector<Point>, std::vector<double>) gw;// = nullptr;
+	// try{
+	// 	MC_integrate mc3(dim, atoi(argv[3]), volume, bb2, 100, get_weights_circ);
+	// }
+	// catch(std::exception& e){
+	// 	std::cout << e.what() << std::endl;
+	// }
 	//std::cout << bb.at(0) << std::endl;
 
 	//mc1.set_values(1000,1.,0.5,100);
