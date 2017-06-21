@@ -8,12 +8,14 @@
 #include <functional>
 #include <stdlib.h>
 
+/*! \file main.cpp */
 
-/*! \brief The main function    
+
+/*! \fn get_weights_square
+ * \brief A weight function to integrate a square area   
  *
- *  Defines a few weight functions and integrates them using MC_flex integrator
+ *  TODO Detailed description
  */
-
 std::vector<double> get_weights_square(std::vector<Point> points, std::vector<double> border){
 
 	bool tester=1;
@@ -32,6 +34,12 @@ std::vector<double> get_weights_square(std::vector<Point> points, std::vector<do
 	return weights;
 }
 
+
+/*! \fn get_weights_circ
+ * \brief A weight function to integrate a circular area  
+ *
+ *  TODO Detailed description
+ */
 std::vector<double> get_weights_circ(std::vector<Point> points, std::vector<double> border){
 
 	double fraction=1.;
@@ -52,9 +60,10 @@ std::vector<double> get_weights_circ(std::vector<Point> points, std::vector<doub
 	return weights;
 }
 
-/*! \brief Main function   
+/*! \fn main 
+ * \brief The main function    
  *
- *  Parameters are dim, borders and number of integration points.
+ *  Shows how to initialise the integrator and generate results with different weight-functions.
  */
 int main(int argc, char *argv[]){
 
@@ -87,6 +96,10 @@ int main(int argc, char *argv[]){
 	std::cout << "Result: " << mc2.result() << ", +- " << mc2.error() << std::endl;
 
 
+	MC_integrate mc3 = std::move(mc2);
+	mc3.calculate();
+	std::cout << "Result: " << mc3.result() << ", +- " << mc3.error() << std::endl;
+
 	// std::vector<double> bb(3, 15);
 	// //std::cout << bb.empty() << std::endl;
 	// std::vector<double> bb2(0.2, 15);
@@ -107,3 +120,24 @@ int main(int argc, char *argv[]){
 
 	return 0;
 }
+
+
+/*! \mainpage A brief description
+ *
+ * \section intro_sec Introduction
+ *
+ * This package provides an Monte-Carlo integrator for user-defined functions.
+ *
+ * \subsection install_sec Installation
+ *
+ * \subsubsection step1 Step 1: ./configure
+ * \subsubsection step2 Step 2: make
+ * \subsubsection step3 Step 3: make check (optional)
+ * 
+ * 
+ */
+
+
+
+
+

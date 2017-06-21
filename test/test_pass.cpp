@@ -7,6 +7,13 @@
 #define BOOST_TEST_MODULE MyTest
 #include <boost/test/included/unit_test.hpp>
 
+/*! \file test_pass.cpp 
+ *  \brief Test functions that should pass  
+ *
+ *  Tests a few calculations for approximate floating point equality
+ *  and makes sure an exception is thrown if the "borders" vector is nonsensical (0-dimensional).
+ */
+
 std::vector<double> get_weights_square(std::vector<Point> points, std::vector<double> border){
 
 	bool tester=1;

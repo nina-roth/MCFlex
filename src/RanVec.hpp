@@ -2,8 +2,10 @@
 #define __RANVEC_H
 
 #include <gsl/gsl_rng.h> //link -lgsl and -lgslcblas at the very end
+//#include <stdexcept>
 
-/*! \brief A class to generate vectors of random numbers   
+/*! \class RanVec
+ *  \brief A class to generate vectors of random numbers   
  *
  *  Detailed description TODO.
  */
@@ -11,15 +13,19 @@
 class RanVec{
 
 	public:
-		RanVec(unsigned long int seed = 0);
+		RanVec(const unsigned long int seed = 0);
 		
-		std::vector<double> get_rands(int n);
-		std::vector<Point> get_vec_rands(int n, int dim);
-		~RanVec(){gsl_rng_free(generator);}
+		std::vector<double> get_rands(const int n); //!< a vector of n random numbers
+		std::vector<Point> get_vec_rands(const int n, const int dim); //!< a vector of dimension dim, containing dim x n random values
+		~RanVec() { gsl_rng_free(generator); generator=nullptr; }
+
+		RanVec(const RanVec& other) = default; 
+    	RanVec& operator=(const RanVec& other) = default;
+    	RanVec(RanVec&& other) = default;
+    	RanVec& operator=(RanVec&& other) = default;
 
 	private:
-		gsl_rng* generator = nullptr;
-		unsigned long int seed;
+		gsl_rng* generator;
 
 };
 

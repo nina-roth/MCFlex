@@ -6,6 +6,12 @@
 #define BOOST_TEST_MODULE MyTest2
 #include <boost/test/included/unit_test.hpp>
 
+/*! \file test_fail.cpp  
+ * \brief Test functions that should fail 
+ *
+ *  Passing in a "borders" vector with different dimension than "dim" should abort.
+ */
+
 std::vector<double> get_weights_circ(std::vector<Point> points, std::vector<double> border){
 
 	double fraction=1.;

@@ -2,12 +2,7 @@
 #include "RanVec.hpp"
 #include <stdexcept>
 
-/*! \brief A class to generate vectors of random numbers   
- *
- *  Detailed description TODO.
- */
-
-RanVec::RanVec (unsigned long int seed) {
+RanVec::RanVec (const unsigned long int seed) {
 
 			const gsl_rng_type* T;
 			T = gsl_rng_ranlxd2;
@@ -16,7 +11,7 @@ RanVec::RanVec (unsigned long int seed) {
 
 }
 
-std::vector<Point> RanVec::get_vec_rands(int n, int dim){
+std::vector<Point> RanVec::get_vec_rands(const int n, const int dim){
 	std::vector<Point> rnd(n, Point(dim));
 	if( rnd.empty() ){
 		throw std::runtime_error("MC_integrate: Illegal parameters for RanVec::get_vec_rands(). Aborting...");
@@ -30,7 +25,7 @@ std::vector<Point> RanVec::get_vec_rands(int n, int dim){
 	return rnd;
 }
 
-std::vector<double> RanVec::get_rands(int n){
+std::vector<double> RanVec::get_rands(const int n){
 	std::vector<double> rnd(n);
 	if( rnd.empty() ){
 		throw std::runtime_error("MC_integrate: Illegal parameters for RanVec::get_rands(). Aborting...");

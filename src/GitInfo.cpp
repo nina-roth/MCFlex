@@ -8,10 +8,6 @@
 	#define GIT_VERSION "N/A"
 #endif
 
-/*! \brief Version header  
- *
- *  Displays the git commit used at compile time and if some files have been modified wrt to that.
- */
 void header(std::ostream &outf) {
   time_t now = time(0);
   struct tm tstruct;

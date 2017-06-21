@@ -2,7 +2,9 @@
 #define __MC_FLEX_H
 #include <stdexcept>
 //#include <iostream>
-/*! \brief A class to do Monte-Carlo Integrationw with a user defined function   
+
+/*! \class MC_integrate
+ * \brief A class to do Monte-Carlo Integration with a user defined function   
  *
  *  Detailed description TODO.
  */
@@ -15,24 +17,23 @@ class MC_integrate{
 		: ndim(ndim_), npoints(npoints_), volume(volume_), border(border_), seed(seed_), get_weights(weight_function) 
 		{
 
-			if( border.empty() ){throw std::runtime_error("MC_integrate: 'Border' is empty. Aborting...");}
-			if (border.size() != ndim ){throw std::runtime_error("MC_integrate: Dimensions of border do not match. Aborting...");}
+			if ( border.empty() ){throw std::runtime_error("MC_integrate: 'Border' is empty. Aborting...");}
+			if ( border.size() != ndim ){throw std::runtime_error("MC_integrate: Dimensions of border do not match. Aborting...");}
 
 		}
 
-		void calculate();
-		//void set_values(int, double, std::vector<double>, unsigned long  int);
-		double result() const {return result_; }
-		double error() const {return error_; }
+		void calculate(); //!< perform the calculation
+		double result() const {return result_; }//!< the MC-integration result
+		double error() const {return error_; }//!< the MC-integration error -- sqrt( Var(result) )
 		~MC_integrate(){};
 
 	private:
-		const int ndim;
-		const int npoints;
-		const double volume;
-		const unsigned long int seed;
-		std::vector<double> border;
-		std::vector<double> (*get_weights)(std::vector<Point>, std::vector<double>);
+		const int ndim; //!< the dimensions of the integration volume
+		const int npoints; //!< the number of randomly drawn integration points
+		const double volume; //!< the volume of the integration region
+		const unsigned long int seed; //!< seed for the random generator
+		std::vector<double> border; //!< the integration borders
+		std::vector<double> (*get_weights)(std::vector<Point>, std::vector<double>); //!< the weight function
 		double result_;
 		double error_;
 
