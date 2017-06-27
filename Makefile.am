@@ -1,3 +1,1 @@
-SUBDIRS = src test 
-## doc
-## test
+SUBDIRS = src test doc
