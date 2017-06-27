@@ -1,6 +1,6 @@
-#include "../src/Point.hpp"
-#include "../src/RanVec.hpp"
-#include "../src/MC_flex.hpp"
+#include "Point.hpp"
+#include "RanVec.hpp"
+#include "MC_flex.hpp"
 #include <vector>
 #include <stdexcept>
 #define BOOST_TEST_MODULE MyTest2
