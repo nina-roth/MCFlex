@@ -12,14 +12,16 @@
  *  Passing in a "borders" vector with different dimension than "dim" should abort.
  */
 
-std::vector<double> get_weights_circ(std::vector<Point> points, std::vector<double> border){
 
-	double fraction=1.;
+template<typename T>
+std::vector<T> get_weights_circ(std::vector<Point<T>> points, std::vector<T> border){
+
+	T fraction= T(1);
 	int dim=points[0].dim;
-	double radius;
-	double border_sq=border[0]*border[0];
-	std::vector<double> weights;
-	std::vector<Point>::const_iterator i;
+	T radius;
+	T border_sq=border[0]*border[0];
+	std::vector<T> weights;
+	typename std::vector<Point<T>>::const_iterator i;
 	for(i=points.begin(); i!=points.end(); i++){
 		radius=0.;
 		for(int j=0; j<dim; j++){
@@ -36,6 +38,6 @@ BOOST_AUTO_TEST_CASE( my_test_4 )
 {
 
 	std::vector<double> borders(1, 0.5);
-	MC_integrate mc4(2, 1000, 1., borders, 100, get_weights_circ);
+	MC_integrate<double> mc4(2, 1000, 1., borders, 100, get_weights_circ);
 
 }

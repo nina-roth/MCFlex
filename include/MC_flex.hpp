@@ -9,11 +9,12 @@
  *  Detailed description TODO.
  */
 
+template<typename T>
 class MC_integrate{
 
 	public:
-		MC_integrate(const int ndim_, const int npoints_, const double volume_, std::vector<double> border_, 
-			         const unsigned long int seed_, std::vector<double> (*weight_function)(std::vector<Point>, std::vector<double>) ) 
+		MC_integrate(const int ndim_, const int npoints_, const T volume_, std::vector<T> border_, 
+			         const unsigned long int seed_, std::vector<T> (*weight_function)(std::vector<Point<T>>, std::vector<T>) ) 
 		: ndim(ndim_), npoints(npoints_), volume(volume_), border(border_), seed(seed_), get_weights(weight_function) 
 		{
 
@@ -23,19 +24,19 @@ class MC_integrate{
 		}
 
 		void calculate(); //!< perform the calculation
-		double result() const {return result_; }//!< the MC-integration result
-		double error() const {return error_; }//!< the MC-integration error -- sqrt( Var(result) )
+		T result() const {return result_; }//!< the MC-integration result
+		T error() const {return error_; }//!< the MC-integration error -- sqrt( Var(result) )
 		~MC_integrate(){};
 
 	private:
 		const int ndim; //!< the dimensions of the integration volume
 		const int npoints; //!< the number of randomly drawn integration points
-		const double volume; //!< the volume of the integration region
+		const T volume; //!< the volume of the integration region
 		const unsigned long int seed; //!< seed for the random generator
-		std::vector<double> border; //!< the integration borders
-		std::vector<double> (*get_weights)(std::vector<Point>, std::vector<double>); //!< the weight function
-		double result_;
-		double error_;
+		std::vector<T> border; //!< the integration borders
+		std::vector<T> (*get_weights)(std::vector<Point<T>>, std::vector<T>); //!< the weight function
+		T result_;
+		T error_;
 
 };
 #endif

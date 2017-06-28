@@ -2,17 +2,19 @@
 #include "RanVec.hpp"
 #include <stdexcept>
 
-RanVec::RanVec (const unsigned long int seed) {
+template<typename T>
+RanVec<T>::RanVec (const unsigned long int seed) {
 
-			const gsl_rng_type* T;
-			T = gsl_rng_ranlxd2;
-			generator = gsl_rng_alloc (T);
+			const gsl_rng_type* gsl_type;
+			gsl_type = gsl_rng_ranlxd2;
+			generator = gsl_rng_alloc(gsl_type);
 			gsl_rng_set(generator, seed);
 
 }
 
-std::vector<Point> RanVec::get_vec_rands(const int n, const int dim){
-	std::vector<Point> rnd(n, Point(dim));
+template<typename T>
+std::vector<Point<T>> RanVec<T>::get_vec_rands(const int n, const int dim){
+	std::vector<Point<T>> rnd(n, Point<T>(dim));
 	if( rnd.empty() ){
 		throw std::runtime_error("MC_integrate: Illegal parameters for RanVec::get_vec_rands(). Aborting...");
 	}
@@ -25,8 +27,9 @@ std::vector<Point> RanVec::get_vec_rands(const int n, const int dim){
 	return rnd;
 }
 
-std::vector<double> RanVec::get_rands(const int n){
-	std::vector<double> rnd(n);
+template<typename T>
+std::vector<T> RanVec<T>::get_rands(const int n){
+	std::vector<T> rnd(n);
 	if( rnd.empty() ){
 		throw std::runtime_error("MC_integrate: Illegal parameters for RanVec::get_rands(). Aborting...");
 	}
@@ -35,3 +38,7 @@ std::vector<double> RanVec::get_rands(const int n){
 	}
 	return rnd;
 }
+
+
+template class RanVec<double>;
+template class RanVec<float>;
