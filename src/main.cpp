@@ -16,13 +16,14 @@
  *
  *  TODO Detailed description
  */
-std::vector<double> get_weights_square(std::vector<Point> points, std::vector<double> border){
+template<typename T>
+std::vector<T> get_weights_square(std::vector<Point<T>> points, std::vector<T> border){
 
 	bool tester=1;
-	double fraction=1.;
+	T fraction=1.;
 	int dim=points[0].dim;
-	std::vector<double> weights;
-	std::vector<Point>::const_iterator i;
+	std::vector<T> weights;
+	typename std::vector<Point<T>>::const_iterator i;
 	for(i=points.begin(); i!=points.end(); i++){
 		tester=1;
 		for(int j=0; j<dim; j++){
@@ -40,14 +41,15 @@ std::vector<double> get_weights_square(std::vector<Point> points, std::vector<do
  *
  *  TODO Detailed description
  */
-std::vector<double> get_weights_circ(std::vector<Point> points, std::vector<double> border){
+template<typename T>
+std::vector<T> get_weights_circ(std::vector<Point<T>> points, std::vector<T> border){
 
-	double fraction=1.;
+	T fraction= T(1);
 	int dim=points[0].dim;
-	double radius;
-	double border_sq=border[0]*border[0];
-	std::vector<double> weights;
-	std::vector<Point>::const_iterator i;
+	T radius;
+	T border_sq=border[0]*border[0];
+	std::vector<T> weights;
+	typename std::vector<Point<T>>::const_iterator i;
 	for(i=points.begin(); i!=points.end(); i++){
 		radius=0.;
 		for(int j=0; j<dim; j++){
@@ -75,7 +77,7 @@ int main(int argc, char *argv[]){
 	std::vector<double> borders(dim, atof(argv[2])); //!< the integration borders
 	double volume=1.;
 
-	MC_integrate mc1(dim, atoi(argv[3]), volume, borders, 100, get_weights_square); //initialise points, volume, border, seed, weight_function
+	MC_integrate<double> mc1(dim, atoi(argv[3]), volume, borders, 100, get_weights_square); //initialise points, volume, border, seed, weight_function
 	mc1.calculate();
 	std::cout << "Result: " << mc1.result() << ", +- " << mc1.error() << std::endl;
 	
@@ -91,14 +93,22 @@ int main(int argc, char *argv[]){
 	//std::cout << std::endl;
 
 
-	MC_integrate mc2(dim, atoi(argv[3]), volume, borders, 100, get_weights_circ); //initialise points, volume, border, seed, weight_function
+	MC_integrate<double> mc2(dim, atoi(argv[3]), volume, borders, 100, get_weights_circ); //initialise points, volume, border, seed, weight_function
 	mc2.calculate();
 	std::cout << "Result: " << mc2.result() << ", +- " << mc2.error() << std::endl;
 
 
-	MC_integrate mc3 = std::move(mc2);
+	MC_integrate<double> mc3 = std::move(mc2);
 	mc3.calculate();
 	std::cout << "Result: " << mc3.result() << ", +- " << mc3.error() << std::endl;
+
+
+	std::vector<float> borders_f(dim, float(atof(argv[2]))); //!< the integration borders
+	float volume_f=1.;
+	MC_integrate<float> mc4(dim, atoi(argv[3]), volume_f, borders_f, 100, get_weights_circ); //initialise points, volume, border, seed, weight_function
+	mc4.calculate();
+	std::cout << "Result: " << mc4.result() << ", +- " << mc4.error() << std::endl;
+
 
 	// std::vector<double> bb(3, 15);
 	// //std::cout << bb.empty() << std::endl;

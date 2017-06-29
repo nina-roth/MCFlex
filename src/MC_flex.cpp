@@ -5,14 +5,15 @@
 #include <iostream>
 #include <cmath>
 
-void MC_integrate::calculate(){
+template<typename T>
+void MC_integrate<T>::calculate(){
 	
-	RanVec rands(seed);
-	std::vector<Point> values = rands.get_vec_rands(npoints, ndim);
-	std::vector<double> weights = get_weights(values, border);
+	RanVec<T> rands(seed);
+	std::vector<Point<T>> values = rands.get_vec_rands(npoints, ndim);
+	std::vector<T> weights = get_weights(values, border);
 	
-	double fexp = 0.;
-	double fsq_exp = 0.;
+	T fexp = T(0);
+	T fsq_exp = T(0);
 
 	for(int i=0; i<npoints; i++){
 
@@ -21,7 +22,7 @@ void MC_integrate::calculate(){
 
 	}
 
-	double normalisation = double(npoints);
+	T normalisation = T(npoints);
 	fexp /= normalisation;
 	fsq_exp /= normalisation;
 
@@ -30,5 +31,7 @@ void MC_integrate::calculate(){
 
 }
 
+template class MC_integrate<double>;
+template class MC_integrate<float>;
 
 
