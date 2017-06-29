@@ -9,10 +9,10 @@ dnl AC_PROG_LIBTOOL
 
 AC_CONFIG_FILES([Makefile src/Makefile test/Makefile]) dnl test/Makefile])
 
-AC_LANG_PUSH([C++])
-AC_CHECK_HEADERS([boost/test/included/unit_test.hpp], [], dnl takes rather long!
-    [AC_MSG_ERROR(You need the Boost Unit Test libraries.)])
-AC_LANG_POP([C++])
+dnl AC_LANG_PUSH([C++])
+dnl AC_CHECK_HEADERS([boost/test/included/unit_test.hpp], [], dnl takes rather long!
+dnl    [AC_MSG_ERROR(You need the Boost Unit Test libraries.)])
+dnl AC_LANG_POP([C++])
 
 AC_CHECK_PROGS([DOXYGEN], [doxygen])
 if test -z "$DOXYGEN";
