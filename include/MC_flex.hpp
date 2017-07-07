@@ -1,7 +1,6 @@
 #ifndef __MC_FLEX_H
 #define __MC_FLEX_H
 #include <stdexcept>
-//#include <iostream>
 
 /*! \class MC_integrate
  * \brief A class to do Monte-Carlo Integration with a user defined function   

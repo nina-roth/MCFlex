@@ -62,6 +62,7 @@ std::vector<T> get_weights_circ(std::vector<Point<T>> points, std::vector<T> bor
 	return weights;
 }
 
+
 /*! \fn main 
  * \brief The main function    
  *
