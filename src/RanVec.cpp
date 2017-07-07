@@ -13,12 +13,15 @@ RanVec<T>::RanVec (const unsigned long int seed) {
 }
 
 template<typename T>
-std::vector<Point<T>> RanVec<T>::get_vec_rands(const int n, const int dim){
-	std::vector<Point<T>> rnd(n, Point<T>(dim));
+using PointVec = std::vector<Point<T>>;
+
+template<typename T>
+PointVec<T> RanVec<T>::get_vec_rands(const int n, const int dim){
+	PointVec<T> rnd( n, Point<T>(dim) );
 	if( rnd.empty() ){
 		throw std::runtime_error("MC_integrate: Illegal parameters for RanVec::get_vec_rands(). Aborting...");
 	}
-	for(int i=0;i<n;i++){
+	for(int i=0; i<n; i++){
 	 	for(int j=0; j<dim; j++){
 	 		rnd[i].coords.push_back( gsl_rng_uniform(generator) );
 	 	}

@@ -77,56 +77,24 @@ int main(int argc, char *argv[]){
 	std::vector<double> borders(dim, atof(argv[2])); //!< the integration borders
 	double volume=1.;
 
-	MC_integrate<double> mc1(dim, atoi(argv[3]), volume, borders, 100, get_weights_square); //initialise points, volume, border, seed, weight_function
+	MC_integrate<double> mc1{dim, atoi(argv[3]), volume, borders, 100, get_weights_square}; //initialise points, volume, border, seed, weight_function
 	mc1.calculate();
 	std::cout << "Result: " << mc1.result() << ", +- " << mc1.error() << std::endl;
-	
-	// RanVec rands;
-	// for(int i=0;i<10;i++){
-	// 	std::cout << rands.get_rand() << std::endl;
-	// }
-	//rands.~RanVec();
 
-	//RanVec test;
-	//std::vector<Point> pp;//(5, Point(dim));
-	//pp=test.get_vec_rands(5,dim);
-	//std::cout << std::endl;
-
-
-	MC_integrate<double> mc2(dim, atoi(argv[3]), volume, borders, 100, get_weights_circ); //initialise points, volume, border, seed, weight_function
+	MC_integrate<double> mc2{ dim, atoi(argv[3]), volume, borders, 100, get_weights_circ }; //initialise points, volume, border, seed, weight_function
 	mc2.calculate();
 	std::cout << "Result: " << mc2.result() << ", +- " << mc2.error() << std::endl;
-
 
 	MC_integrate<double> mc3 = std::move(mc2);
 	mc3.calculate();
 	std::cout << "Result: " << mc3.result() << ", +- " << mc3.error() << std::endl;
 
-
-	std::vector<float> borders_f(dim, float(atof(argv[2]))); //!< the integration borders
+	std::vector<float> borders_f(dim, float(atof(argv[2])) ); //!< the integration borders
 	float volume_f=1.;
-	MC_integrate<float> mc4(dim, atoi(argv[3]), volume_f, borders_f, 100, get_weights_circ); //initialise points, volume, border, seed, weight_function
+	MC_integrate<float> mc4{ dim, atoi(argv[3]), volume_f, borders_f, 100, get_weights_circ }; //initialise points, volume, border, seed, weight_function
 	mc4.calculate();
 	std::cout << "Result: " << mc4.result() << ", +- " << mc4.error() << std::endl;
 
-
-	// std::vector<double> bb(3, 15);
-	// //std::cout << bb.empty() << std::endl;
-	// std::vector<double> bb2(0.2, 15);
-	// //std::cout << bb2.empty() << std::endl;
-	// //gw = nullptr;
-	// //std::vector<double> (*)(std::vector<Point>, std::vector<double>) gw;// = nullptr;
-	// try{
-	// 	MC_integrate mc3(dim, atoi(argv[3]), volume, bb2, 100, get_weights_circ);
-	// }
-	// catch(std::exception& e){
-	// 	std::cout << e.what() << std::endl;
-	// }
-	//std::cout << bb.at(0) << std::endl;
-
-	//mc1.set_values(1000,1.,0.5,100);
-	//mc1.calculate(); //sets border
-	//std::cout << mc1.result << " " << mc1.error<< std::endl;
 
 	return 0;
 }

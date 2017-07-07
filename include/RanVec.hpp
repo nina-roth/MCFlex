@@ -1,6 +1,7 @@
 #ifndef __RANVEC_H
 #define __RANVEC_H
 
+//#include <memory>
 #include <gsl/gsl_rng.h> //link -lgsl and -lgslcblas at the very end
 //#include <stdexcept>
 

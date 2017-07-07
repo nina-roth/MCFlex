@@ -38,6 +38,6 @@ BOOST_AUTO_TEST_CASE( my_test_4 )
 {
 
 	std::vector<double> borders(1, 0.5);
-	MC_integrate<double> mc4(2, 1000, 1., borders, 100, get_weights_circ);
+	MC_integrate<double> mc4{ 2, 1000, 1., borders, 100, get_weights_circ };
 
 }
