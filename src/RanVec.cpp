@@ -13,7 +13,7 @@ PointVec<T> RanVec<T>::get_vec_rands(const int n, const int dim){
 	}
 	for(int i=0; i<n; i++){
 	 	for(int j=0; j<dim; j++){
-	 		rndPoints[i].coords.push_back( gsl_rng_uniform( generator.get() ) );
+	 		rndPoints[i].coords.push_back( rand_distr(mt_rand) );
 	 	}
 	}
 
@@ -27,7 +27,7 @@ std::vector<T> RanVec<T>::get_rands(const int n){
 		throw std::runtime_error("MC_integrate: Illegal parameters for RanVec::get_rands(). Aborting...");
 	}
 	for(int i=0; i<n; i++){
-	 	rnd[i] = gsl_rng_uniform( generator.get() );
+	 	rnd[i] = rand_distr(mt_rand);
 	}
 	return rnd;
 }

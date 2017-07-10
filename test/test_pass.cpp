@@ -60,8 +60,8 @@ BOOST_AUTO_TEST_CASE( my_test_1 )
 	std::vector<double> borders(2, 0.5);
     MC_integrate<double> mc1{ 2, 1000, 1., borders, 100, get_weights_square }; //initialise points, volume, border, seed, weight_function
 	mc1.calculate();
-	double diff_result_1 = fabs(mc1.result() -0.258);
-	double diff_error_1 = fabs(mc1.error() -0.013836);
+	double diff_result_1 = fabs(mc1.result() - 0.26);
+	double diff_error_1 = fabs(mc1.error() - 0.0138708);
 
 	BOOST_REQUIRE( diff_result_1 < 1e-7 );
     BOOST_REQUIRE( diff_error_1 < 1e-7 );
@@ -74,8 +74,8 @@ BOOST_AUTO_TEST_CASE( my_test_2 )
 	std::vector<double> borders(2, 0.5);
 	MC_integrate<double> mc2{ 2, 1000, 1., borders, 100, get_weights_circ }; //initialise points, volume, border, seed, weight_function
 	mc2.calculate();
-	double diff_result_2 = fabs(mc2.result() - 0.194);
-	double diff_error_2 = fabs(mc2.error() - 0.0125046);
+	double diff_result_2 = fabs(mc2.result() - 0.212);
+	double diff_error_2 = fabs(mc2.error() - 0.012925);
 
 	BOOST_REQUIRE( diff_result_2 < 1e-7 );
     BOOST_REQUIRE( diff_error_2 < 1e-7 );
