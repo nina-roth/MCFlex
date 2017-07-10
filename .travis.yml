@@ -1,0 +1,13 @@
+language: cpp
+
+#dist: trusty
+
+compiler:
+- gcc
+
+os:
+- osx
+
+branches:
+  only:
+  - master
