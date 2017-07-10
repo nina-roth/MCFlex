@@ -13,3 +13,4 @@ To build:
 - make check (optional: runs minimal tests)
 - make install
 
+[![Build Status](https://travis-ci.org/nina-roth/MCFlex.svg?branch=master)](https://travis-ci.org/nina-roth/MCFlex)

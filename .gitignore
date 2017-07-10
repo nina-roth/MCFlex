@@ -1,6 +1,8 @@
 *.dSYM
 *.o
 *.in
-doc/*
+doc/doxyfile.stamp
+doc/html
+doc/latex
 bin/*
 Makefile

@@ -3,7 +3,7 @@ language: cpp
 #dist: trusty
 
 compiler:
-- gcc
+- g++
 
 os:
 - osx
@@ -11,6 +11,7 @@ os:
 branches:
   only:
   - master
+  - inst
 
 before_install:
   - aclocal
