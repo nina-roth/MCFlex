@@ -13,4 +13,4 @@ branches:
   - master
 
 before_install:
-  - autoreconf --add-missing
+  - autoreconf -i
