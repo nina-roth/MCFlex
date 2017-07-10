@@ -14,7 +14,7 @@ branches:
   - inst
 
 before_install:
-  #- if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install doxygen; else brew install doxygen; fi
+  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install doxygen; else brew install doxygen; fi
   #- sudo apt-add-repository -y ppa:libreoffice/libreoffice-4-2
   #  - sudo apt-get update
   #  - sudo apt-get install doxygen
@@ -25,4 +25,4 @@ before_install:
   - autoconf
 
 script:
-  - ./configure && make && make check && make install && make dist
+  - ./configure && make && make check # && make install && make dist
