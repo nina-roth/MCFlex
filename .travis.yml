@@ -13,4 +13,6 @@ branches:
   - master
 
 before_install:
-  - autoreconf -i
+  - aclocal
+  - automake --add-missing
+  - autoconf
