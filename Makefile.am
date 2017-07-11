@@ -7,11 +7,11 @@ SUBDIRS = src test
 EXTRA_DIST = doc/Doxyfile.in doc/Makefile.am  doc/Makefile.in README.md
 
 install-data-local:
-	$(MKDIR_P) ${pkgdatadir} 
-	cp ${top_srcdir}/README.md ${pkgdatadir}
+	$(MKDIR_P) ${DESTDIR}${pkgdatadir} 
+	cp ${top_srcdir}/README.md ${DESTDIR}${pkgdatadir}
 
 uninstall-hook:
-	-rmdir ${pkgdatadir}
+	-rm -rf ${DESTDIR}${pkgdatadir}
 
 endif
 
