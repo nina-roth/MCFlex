@@ -1,8 +1,10 @@
 *.dSYM
 *.o
 *.in
+doc/Doxyfile
 doc/doxyfile.stamp
 doc/html
 doc/latex
 bin/*
 Makefile
+autom4te.cache/

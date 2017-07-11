@@ -14,15 +14,13 @@ branches:
   - inst
 
 before_install:
+  - rvm get head
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install doxygen; else brew install doxygen; fi
-  #- sudo apt-add-repository -y ppa:libreoffice/libreoffice-4-2
-  #  - sudo apt-get update
-  #  - sudo apt-get install doxygen
-  #  - brew update #(slow!)
-  #  - brew install doxygen
   - aclocal
   - automake --add-missing
   - autoconf
 
 script:
-  - ./configure && make && make check # && make install && make dist
+  - ./configure && make distcheck && make distclean
+  - rm *.tar.gz
+  - autoreconf && ./configure --disable-doxygen && DISTCHECK_CONFIGURE_FLAGS="--disable-doxygen" make distcheck && make distclean
