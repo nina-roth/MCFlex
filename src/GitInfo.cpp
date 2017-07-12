@@ -1,14 +1,16 @@
 #include "GitInfo.hpp"
 
+#include <ostream>
+
 #ifndef GIT_MODIFIED
-	#define GIT_MODIFIED "none"
+	#define GIT_MODIFIED "N/A"
 #endif
 
 #ifndef GIT_VERSION
 	#define GIT_VERSION "N/A"
 #endif
 
-void header(std::ostream &outf) {
+void GitHeader(std::ostream &outf) {
   time_t now = time(0);
   struct tm tstruct;
   char buf[80];

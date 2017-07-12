@@ -1,4 +1,4 @@
-include ${top_srcdir}/common.mk
+include $(top_srcdir)/common.mk #don't use {} here!
 
 AUTOMAKE_OPTIONS = foreign
 check_PROGRAMS = topass tofail
@@ -11,7 +11,7 @@ topass_CXXFLAGS = ${AM_CXXFLAGS} -I${INCLUDEDIR}
 topass_LDADD = ${top_builddir}/src/libmcflex.a
 
 tofail_SOURCES = test_fail.cpp 
-tofail_CXXFLAGS = ${AM_CXXFLAGS} -I$(INCLUDEDIR)
+tofail_CXXFLAGS = ${AM_CXXFLAGS} -I${INCLUDEDIR}
 tofail_LDADD = ${top_builddir}/src/libmcflex.a
 
 clean-local:

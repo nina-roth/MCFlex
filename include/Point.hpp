@@ -1,5 +1,6 @@
 #ifndef __POINT_HPP
 #define __POINT_HPP
+
 #include <vector>
 
 /*! \file Point.cpp */
