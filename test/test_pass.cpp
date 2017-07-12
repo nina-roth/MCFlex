@@ -1,8 +1,9 @@
 #include "Point.hpp"
-#include "RanVec.hpp"
 #include "MC_flex.hpp"
+
 #include <vector>
 #include <stdexcept>
+
 #define BOOST_TEST_MODULE MyTest
 #include <boost/test/included/unit_test.hpp>
 
@@ -89,15 +90,6 @@ BOOST_AUTO_TEST_CASE( my_test_3 )
 	BOOST_CHECK_THROW( MC_integrate<double> mc3( 2, 1000, 1., borders, 100, get_weights_circ ), std::runtime_error );
 
 }
-
-// BOOST_AUTO_TEST_CASE_EXPECTED_FAILURES( my_test_4, 1 )
-// BOOST_AUTO_TEST_CASE( my_test_4 )
-// {
-
-// 	std::vector<double> borders(1, 0.5);
-// 	BOOST_CHECK_NO_THROW( MC_integrate mc4(2, 1000, 1., borders, 100, get_weights_circ) );
-
-// }
 
 
 

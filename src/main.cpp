@@ -1,13 +1,9 @@
-#include "Point.hpp"
 #include "MC_flex.hpp"
 #include "GitInfo.hpp"
-//#include "RanVec.hpp" only needed if we explicitely create an instance of class RanVec
+#include "Point.hpp"
+
 #include <iostream>
-#include <cmath>
 #include <vector>
-#include <functional>
-#include <stdlib.h>
-#include <random>
 
 /*! \file main.cpp */
 
@@ -73,7 +69,7 @@ int main(int argc, char *argv[]){
 
 	if(argc != 4){std::cerr << "Error " << std::endl; return -1; }
 
-	header(std::cout);
+	GitHeader(std::cout);
 
 	int dim=atoi(argv[1]); //!< the dimension of integration
 	std::vector<double> borders(dim, atof(argv[2])); //!< the integration borders

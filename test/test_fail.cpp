@@ -1,8 +1,8 @@
 #include "Point.hpp"
-#include "RanVec.hpp"
 #include "MC_flex.hpp"
+
 #include <vector>
-#include <stdexcept>
+
 #define BOOST_TEST_MODULE MyTest2
 #include <boost/test/included/unit_test.hpp>
 

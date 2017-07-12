@@ -1,9 +1,10 @@
 #ifndef __RANVEC_H
 #define __RANVEC_H
 
-#include <memory>
+#include "Point.hpp"
+
+#include <vector>
 #include <random>
-#include <iostream>
 
 /*! \class RanVec
  *  \brief A class to generate vectors of random numbers   
@@ -25,7 +26,6 @@ class RanVec{
 	private:
 		std::mt19937 mt_rand;
 		std::uniform_real_distribution<T> rand_distr{ 0.0, 1.0 };
-
 
 };
 

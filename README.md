@@ -1,4 +1,4 @@
-# MCFlex [![Build Status](https://travis-ci.org/nina-roth/MCFlex.svg?branch=inst)](https://travis-ci.org/nina-roth/MCFlex)
+# MCFlex [![Build Status](https://travis-ci.org/nina-roth/MCFlex.svg?branch=master)](https://travis-ci.org/nina-roth/MCFlex)
 
 A Monte-Carlo Integrator with user-defined functions
 

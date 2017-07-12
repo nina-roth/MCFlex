@@ -1,5 +1,9 @@
 #ifndef __MC_FLEX_H
 #define __MC_FLEX_H
+
+#include "Point.hpp"
+
+#include <vector>
 #include <stdexcept>
 
 /*! \class MC_integrate
@@ -38,4 +42,5 @@ class MC_integrate{
 		T error_;
 
 };
+
 #endif
